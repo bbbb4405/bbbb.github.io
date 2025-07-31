@@ -44,3 +44,30 @@ document.querySelectorAll('.nav-item').forEach(item => {
     item.classList.add('active');
   });
 });
+
+// ---------------------------
+// Hover effect on cards
+// ---------------------------
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("mouseenter", () => {
+    card.classList.add("hovered");
+  });
+  card.addEventListener("mouseleave", () => {
+    card.classList.remove("hovered");
+  });
+});
+
+// ---------------------------
+// Animate elements on scroll
+// ---------------------------
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("fade-in");
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll(".animate-on-scroll").forEach(el => observer.observe(el));
